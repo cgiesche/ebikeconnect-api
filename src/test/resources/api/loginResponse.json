@@ -1,0 +1,53 @@
+{
+  "user": {
+    "user_id": "1234567",
+    "email": "foo@bar.de",
+    "first_name": "Bernd",
+    "last_name": "Brot",
+    "home_address": {
+      "street": "Sesamstraße",
+      "city": "Bonn",
+      "state": "Baden-Württemberg",
+      "country": "Deutschland",
+      "zip": "45781",
+      "name": "Sesamstraße, 45781 Bonn, Deutschland",
+      "created_at": "1459186892465",
+      "location": {
+        "latitude": 49.08985,
+        "longitude": 8.55626,
+        "id": "12345667"
+      },
+      "id": "1234567"
+    },
+    "date_of_birth": "1982-03-28",
+    "gender": "male",
+    "height": 188,
+    "weight": 75.0,
+    "activity_level": 5,
+    "wifi_token_list": [
+      {
+        "token_value": "dasistfuermichtsowiesouninteressant",
+        "mobile_id": "4214345634215425643536"
+      }
+    ],
+    "remaining_home_changes": 1
+  },
+  "user_settings": {
+    "language": "de-de",
+    "units": "metric",
+    "time_format": "12h",
+    "date_format": "dd/mm/yyyy",
+    "user_objective": "FITNESS",
+    "overall_fitness": 1,
+    "detailed_fitness": 1,
+    "s_pedelec": -1,
+    "id": "12344576"
+  },
+  "portal_settings": {
+    "background": "Default",
+    "selected_profile": "COMMUTER",
+    "map_provider": "SKOBBLER",
+    "activity_chart_type": "SPEED",
+    "bike_type": 25
+  }
+}
