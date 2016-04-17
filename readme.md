@@ -2,7 +2,7 @@
 
 **JAX-RS client implementation for accessing ebike-connect services.**
 
-This library allows you to access ebike-connect REST services. It is currently in an early development state and therefore to be considered as *experimental* and *incomplete*.
+This library allows you to access ebike-connect HTTP services. It is currently in an early development state and therefore to be considered as *experimental* and *incomplete*.
 
 If you are still brave enough to give it a try, here is how:
 
