@@ -1,8 +1,8 @@
-[![Build Status](https://travis-ci.org/cgiesche/ebikeconnect-api.svg?branch=master)](https://travis-ci.org/cgiesche/ebikeconnect-api)
+[![Build Status](https://travis-ci.org/cgiesche/ebikeconnect-api.svg?branch=master)](https://travis-ci.org/cgiesche/ebikeconnect-api) [![Maven Central](https://maven-badges.herokuapp.com/maven-central/de.perdoctus/ebikeconnect-api/badge.svg)](http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22de.perdoctus%22%20AND%20a%3A%22ebikeconnect-api%22)
 
-**JAX-RS client implementation for accessing ebike-connect services.**
+**JAX-RS client implementation for accessing Bosch ebike-connect webservices.**
 
-This library allows you to access ebike-connect HTTP services. It is currently in an early development state and therefore to be considered as *experimental* and *incomplete*.
+This library allows you to access Bosch ebike-connect HTTP services. It is currently in an early development state and therefore to be considered as *experimental* and *incomplete*.
 
 If you are still brave enough to give it a try, here is how:
 
