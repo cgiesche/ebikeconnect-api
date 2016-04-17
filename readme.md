@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/cgiesche/ebikeconnect-api.svg?branch=master)](https://travis-ci.org/cgiesche/ebikeconnect-api) [![Maven Central](https://maven-badges.herokuapp.com/maven-central/de.perdoctus/ebikeconnect-api/badge.svg)](http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22de.perdoctus%22%20AND%20a%3A%22ebikeconnect-api%22)
+[![Build Status](https://travis-ci.org/cgiesche/ebikeconnect-api.svg?branch=master)](https://travis-ci.org/cgiesche/ebikeconnect-api) [![Maven Central](https://maven-badges.herokuapp.com/maven-central/de.perdoctus/ebikeconnect-api/badge.svg)](http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22de.perdoctus%22%20AND%20a%3A%22ebikeconnect-api%22) [![Dependency Status](https://www.versioneye.com/user/projects/57136231fcd19a00454411cd/badge.svg?style=flat)](https://www.versioneye.com/user/projects/57136231fcd19a00454411cd)
 
 **JAX-RS client implementation for accessing Bosch ebike-connect webservices.**
 
