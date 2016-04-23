@@ -2,7 +2,7 @@
 
 **JAX-RS client implementation for accessing Bosch ebike-connect webservices.**
 
-This library allows you to access Bosch ebike-connect HTTP services. It is currently in an early development state and therefore to be considered as *experimental* and *incomplete*.
+This library allows you to (read-only) access Bosch ebike-connect HTTP services. It is currently in an early development state and therefore to be considered as *experimental* and *incomplete*.
 
 If you are still brave enough to give it a try, here is how:
 
@@ -18,6 +18,9 @@ EBCActivityHeadersResponse activities = service.getAllActivityHeaders();
 
 // Retrieve details about a single activity. The startTime seems to be a kind of primary key for activities...
 EBCActivityDetailsResponse actitiy = service.getActivityDetails(activities.get(0).getStartTime());
+
+// Retrieve raw data of a single activity. Again, startTime is the "id"...
+EBCRawActivityResponse rawActitiy = service.getRawActivity(activities.get(0).getStartTime());
 
 // Finally log out
 service.logout();

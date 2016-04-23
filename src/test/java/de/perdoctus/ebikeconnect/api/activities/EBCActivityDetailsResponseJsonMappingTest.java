@@ -36,7 +36,7 @@ public class EBCActivityDetailsResponseJsonMappingTest extends JsonMappingTest {
 
     @Test
     public void deserialize() throws Exception {
-        final EBCActivityDetailsResponse EBCActivityDetailsResponse = objectMapper.readValue(getClass().getResourceAsStream("/api/activitiesDetails1459524250000.json"), EBCActivityDetailsResponse.class);
+        final EBCActivityDetailsResponse EBCActivityDetailsResponse = objectMapper.readValue(getClass().getResourceAsStream("/api/activityDetailsResponse.json"), EBCActivityDetailsResponse.class);
 
         assertThat(EBCActivityDetailsResponse).isNotNull();
         assertThat(EBCActivityDetailsResponse.getActivityHeader().getStatus()).isEqualTo(1);

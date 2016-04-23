@@ -44,8 +44,7 @@ public class ObjectMapperProvider implements ContextResolver<ObjectMapper> {
     public ObjectMapperProvider() {
         this.objectMapper = new ObjectMapper();
         final DeserializationConfig deserializationConfig = objectMapper.getDeserializationConfig().withHandler(new UnknownPropertyLoggerProblemHandler());
-        this. objectMapper.setConfig(deserializationConfig);
-
+        this.objectMapper.setConfig(deserializationConfig);
     }
 
     @Override

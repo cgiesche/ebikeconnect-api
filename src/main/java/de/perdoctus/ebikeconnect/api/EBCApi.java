@@ -31,6 +31,7 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.jaxrs.annotation.JacksonFeatures;
 import de.perdoctus.ebikeconnect.api.activities.EBCActivityDetailsResponse;
 import de.perdoctus.ebikeconnect.api.activities.EBCActivityHeadersResponse;
+import de.perdoctus.ebikeconnect.api.activities.EBCRawActivityResponse;
 import de.perdoctus.ebikeconnect.api.login.EBCLoginRequest;
 import de.perdoctus.ebikeconnect.api.login.EBCLoginResponse;
 
@@ -75,10 +76,15 @@ public interface EBCApi {
     @Path("/api/activities/headers")
     @Produces(MediaType.APPLICATION_JSON)
     @JacksonFeatures(deserializationEnable = DeserializationFeature.UNWRAP_ROOT_VALUE)
-    EBCActivityHeadersResponse readActivityHeader(@CookieParam("JSESSIONID") final String sessionId, @QueryParam("filters") final String filterExpression);
+    EBCActivityHeadersResponse readActivityHeaders(@CookieParam("JSESSIONID") final String sessionId, @QueryParam("filters") final String filterExpression);
 
     @GET
     @Path("/api/activities/details/{startTime}")
     @Produces(MediaType.APPLICATION_JSON)
     EBCActivityDetailsResponse readActivityDetails(@CookieParam("JSESSIONID") final String sessionId, @PathParam("startTime") final long startTime);
+
+    @GET
+    @Path("/api/activities")
+    @Produces(MediaType.APPLICATION_JSON)
+    EBCRawActivityResponse readRawActivityDetails(@CookieParam("JSESSIONID") final String sessionId, @QueryParam("filters") final String filterExpression);
 }

@@ -27,9 +27,7 @@ package de.perdoctus.ebikeconnect;
  */
 
 
-import com.fasterxml.jackson.databind.DeserializationConfig;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import de.perdoctus.ebikeconnect.jaxrs.UnknownPropertyLoggerProblemHandler;
 import org.junit.Before;
 
 public abstract class JsonMappingTest {
@@ -39,8 +37,6 @@ public abstract class JsonMappingTest {
     @Before
     public void setUp() throws Exception {
         this.objectMapper = new ObjectMapper();
-        DeserializationConfig deserializationConfig = objectMapper.getDeserializationConfig().withHandler(new UnknownPropertyLoggerProblemHandler());
-        objectMapper.setConfig(deserializationConfig);
     }
 
 }

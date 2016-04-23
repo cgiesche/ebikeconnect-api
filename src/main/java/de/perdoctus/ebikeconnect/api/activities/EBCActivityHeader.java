@@ -55,6 +55,9 @@ public class EBCActivityHeader {
     @JsonProperty("status")
     private int status;
 
+    @JsonProperty("bui_serial")
+    private String buiSerial;
+
     public long getStartTime() {
         return startTime;
     }
@@ -119,4 +122,11 @@ public class EBCActivityHeader {
         this.status = status;
     }
 
+    public String getBuiSerial() {
+        return buiSerial;
+    }
+
+    public void setBuiSerial(String buiSerial) {
+        this.buiSerial = buiSerial;
+    }
 }

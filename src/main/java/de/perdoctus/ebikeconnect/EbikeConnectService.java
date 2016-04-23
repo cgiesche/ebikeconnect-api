@@ -29,6 +29,8 @@ package de.perdoctus.ebikeconnect;
 import de.perdoctus.ebikeconnect.api.EBCApi;
 import de.perdoctus.ebikeconnect.api.activities.EBCActivityDetailsResponse;
 import de.perdoctus.ebikeconnect.api.activities.EBCActivityHeadersResponse;
+import de.perdoctus.ebikeconnect.api.activities.EBCRawActivity;
+import de.perdoctus.ebikeconnect.api.activities.EBCRawActivityResponse;
 import de.perdoctus.ebikeconnect.api.login.EBCLoginRequest;
 import de.perdoctus.ebikeconnect.api.login.EBCLoginResponse;
 import de.perdoctus.ebikeconnect.jaxrs.ObjectMapperProvider;
@@ -57,7 +59,9 @@ public class EbikeConnectService implements Closeable {
     }
 
     public EbikeConnectService(final String endpointURL) {
-        this.client = ClientBuilder.newClient().register(ObjectMapperProvider.class);
+        this.client = ClientBuilder.newClient();
+        this.client.register(ObjectMapperProvider.class);
+
         final WebTarget webTarget = client.target(endpointURL);
         final ResteasyWebTarget resteasyWebTarget = (ResteasyWebTarget) webTarget;
         this.ebikeConnectAPI = resteasyWebTarget.proxy(EBCApi.class);
@@ -102,6 +106,17 @@ public class EbikeConnectService implements Closeable {
         requireLoggedIn();
 
         return ebikeConnectAPI.readActivityDetails(this.sessionId, startTime);
+    }
+
+    public EBCRawActivity getRawActivity(final long startTime) throws UnauthenticatedException {
+        requireLoggedIn();
+
+        final EBCRawActivityResponse ebcRawActivityResponse = ebikeConnectAPI.readRawActivityDetails(sessionId, "[start_time|eq|" + startTime + ";]");
+        if (ebcRawActivityResponse.getActivityList().isEmpty()) {
+            return null;
+        }
+
+        return ebcRawActivityResponse.getActivityList().get(0);
     }
 
     public boolean isLoggedIn() {

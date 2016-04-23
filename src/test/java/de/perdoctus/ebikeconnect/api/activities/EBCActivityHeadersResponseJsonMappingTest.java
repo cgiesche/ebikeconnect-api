@@ -27,6 +27,7 @@ package de.perdoctus.ebikeconnect.api.activities;
  */
 
 
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import de.perdoctus.ebikeconnect.JsonMappingTest;
 import org.junit.Test;
 
@@ -36,7 +37,9 @@ public class EBCActivityHeadersResponseJsonMappingTest extends JsonMappingTest {
 
     @Test
     public void deserialize() throws Exception {
-        final EBCActivityHeadersResponse EBCActivityHeadersResponse = objectMapper.readValue(getClass().getResourceAsStream("/api/activitiesHeadersResponse.json"), EBCActivityHeadersResponse.class);
+        objectMapper.enable(DeserializationFeature.UNWRAP_ROOT_VALUE);
+
+        final EBCActivityHeadersResponse EBCActivityHeadersResponse = objectMapper.readValue(getClass().getResourceAsStream("/api/activityHeadersResponse.json"), EBCActivityHeadersResponse.class);
 
         assertThat(EBCActivityHeadersResponse).isNotNull();
         assertThat(EBCActivityHeadersResponse.getActivityList()).hasSize(3);
