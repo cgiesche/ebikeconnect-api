@@ -27,13 +27,7 @@ package de.perdoctus.ebikeconnect.api.login;
  */
 
 
-import com.fasterxml.jackson.annotation.JsonAnyGetter;
-import com.fasterxml.jackson.annotation.JsonAnySetter;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
-
-import java.util.HashMap;
-import java.util.Map;
 
 public class EBCLocation {
 
@@ -45,9 +39,6 @@ public class EBCLocation {
 
     @JsonProperty("latitude")
     private double latitude;
-
-    @JsonIgnore
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     public double getLongitude() {
         return longitude;
@@ -73,13 +64,4 @@ public class EBCLocation {
         this.id = id;
     }
 
-    @JsonAnyGetter
-    public Map<String, Object> getAdditionalProperties() {
-        return this.additionalProperties;
-    }
-
-    @JsonAnySetter
-    public void setAdditionalProperty(String name, Object value) {
-        this.additionalProperties.put(name, value);
-    }
 }

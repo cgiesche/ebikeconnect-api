@@ -43,6 +43,8 @@ public class EBCRawActivityResponseTestJsonMappingTest extends JsonMappingTest {
 
         assertThat(response).isNotNull();
         assertThat(response.getActivityList()).hasSize(4);
+        assertThat(response.getActivityList().get(0).getGpsPoints()).isNotEmpty();
+        assertThat(response.getActivityList().get(0).getAltitudes()).isNotEmpty();
     }
 
 }

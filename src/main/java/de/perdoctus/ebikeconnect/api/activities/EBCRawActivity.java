@@ -29,6 +29,7 @@ package de.perdoctus.ebikeconnect.api.activities;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonUnwrapped;
+import de.perdoctus.ebikeconnect.api.login.EBCLocation;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -85,6 +86,12 @@ public class EBCRawActivity {
 
     @JsonProperty("serials_batteries")
     private List<Object> serialsBatteries = new ArrayList<>();
+
+    @JsonProperty("gps_points")
+    private List<EBCLocation> gpsPoints;
+
+    @JsonProperty("altitudes")
+    private List<Float> altitudes;
 
     @JsonProperty("activity_data")
     private List<EBCRawActivityData> activityData;
@@ -223,6 +230,22 @@ public class EBCRawActivity {
 
     public void setSerialsBatteries(List<Object> serialsBatteries) {
         this.serialsBatteries = serialsBatteries;
+    }
+
+    public List<EBCLocation> getGpsPoints() {
+        return gpsPoints;
+    }
+
+    public void setGpsPoints(List<EBCLocation> gpsPoints) {
+        this.gpsPoints = gpsPoints;
+    }
+
+    public List<Float> getAltitudes() {
+        return altitudes;
+    }
+
+    public void setAltitudes(List<Float> altitudes) {
+        this.altitudes = altitudes;
     }
 
     public List<EBCRawActivityData> getActivityData() {

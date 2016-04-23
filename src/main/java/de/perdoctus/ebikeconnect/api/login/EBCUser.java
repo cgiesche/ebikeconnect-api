@@ -27,14 +27,9 @@ package de.perdoctus.ebikeconnect.api.login;
  */
 
 
-import com.fasterxml.jackson.annotation.JsonAnyGetter;
-import com.fasterxml.jackson.annotation.JsonAnySetter;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class EBCUser {
 
@@ -73,9 +68,6 @@ public class EBCUser {
 
     @JsonProperty("remaining_home_changes")
     private int remainingHomeChanges;
-
-    @JsonIgnore
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     public int getUserId() {
         return userId;
@@ -171,20 +163,6 @@ public class EBCUser {
 
     public void setRemainingHomeChanges(int remainingHomeChanges) {
         this.remainingHomeChanges = remainingHomeChanges;
-    }
-
-    public void setAdditionalProperties(Map<String, Object> additionalProperties) {
-        this.additionalProperties = additionalProperties;
-    }
-
-    @JsonAnyGetter
-    public Map<String, Object> getAdditionalProperties() {
-        return this.additionalProperties;
-    }
-
-    @JsonAnySetter
-    public void setAdditionalProperty(String name, Object value) {
-        this.additionalProperties.put(name, value);
     }
 
 }
