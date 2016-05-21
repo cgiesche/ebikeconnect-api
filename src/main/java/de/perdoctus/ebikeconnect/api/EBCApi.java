@@ -86,5 +86,6 @@ public interface EBCApi {
     @GET
     @Path("/api/activities")
     @Produces(MediaType.APPLICATION_JSON)
+    @JacksonFeatures(deserializationEnable = DeserializationFeature.UNWRAP_ROOT_VALUE)
     EBCRawActivityResponse readRawActivityDetails(@CookieParam("JSESSIONID") final String sessionId, @QueryParam("filters") final String filterExpression);
 }
