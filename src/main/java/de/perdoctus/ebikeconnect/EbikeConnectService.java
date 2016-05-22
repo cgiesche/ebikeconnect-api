@@ -78,6 +78,7 @@ public class EbikeConnectService implements Closeable {
         final Response rawLoginResponse = ebikeConnectAPI.login(new EBCLoginRequest(username, password));
 
         if (rawLoginResponse.getStatus() != Response.Status.OK.getStatusCode()) {
+            rawLoginResponse.close();
             throw new LoginFailedException(rawLoginResponse.getStatusInfo().getReasonPhrase());
         }
 
