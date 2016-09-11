@@ -44,9 +44,6 @@ import javax.ws.rs.core.Response;
 import java.io.Closeable;
 import java.io.IOException;
 
-/**
- *
- */
 public class EbikeConnectService implements Closeable {
 
     public static final String DEFAULT_ENDPOINT = "https://www.ebike-connect.com";

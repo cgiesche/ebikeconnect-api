@@ -31,6 +31,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class EBCActivityHeader {
 
+    @JsonProperty("id")
+    private long id;
+
     @JsonProperty("start_time")
     private long startTime;
 
@@ -57,6 +60,14 @@ public class EBCActivityHeader {
 
     @JsonProperty("bui_serial")
     private String buiSerial;
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
 
     public long getStartTime() {
         return startTime;

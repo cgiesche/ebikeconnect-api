@@ -42,7 +42,7 @@ public class EBCRawActivityResponseTestJsonMappingTest extends JsonMappingTest {
         final EBCRawActivityResponse response = objectMapper.readValue(getClass().getResourceAsStream("/api/rawActivityResponse.json"), EBCRawActivityResponse.class);
 
         assertThat(response).isNotNull();
-        assertThat(response.getActivityList()).hasSize(4);
+        assertThat(response.getActivityList()).hasSize(1);
         assertThat(response.getActivityList().get(0).getGpsPoints()).isNotEmpty();
         assertThat(response.getActivityList().get(0).getAltitudes()).isNotEmpty();
     }
