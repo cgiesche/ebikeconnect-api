@@ -31,6 +31,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class EBCLoginResponse {
 
+    @JsonProperty("id")
+    private long id;
+
     @JsonProperty("user")
     private EBCUser user;
 
@@ -39,6 +42,14 @@ public class EBCLoginResponse {
 
     @JsonProperty("portal_settings")
     private EBCPortalSettings portalSettings;
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
 
     public EBCUser getUser() {
         return user;

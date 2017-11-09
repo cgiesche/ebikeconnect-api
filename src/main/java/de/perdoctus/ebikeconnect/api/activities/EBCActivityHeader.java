@@ -49,6 +49,9 @@ public class EBCActivityHeader {
     @JsonProperty("type")
     private String type;
 
+    @JsonProperty("title")
+    private String title;
+
     @JsonProperty("total_distance")
     private double totalDistance;
 
@@ -107,6 +110,14 @@ public class EBCActivityHeader {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public double getTotalDistance() {

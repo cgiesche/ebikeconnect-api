@@ -32,10 +32,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class EBCAddress {
 
     @JsonProperty("id")
-    private int id;
+    private long id;
 
     @JsonProperty("street")
     private String street;
+
+    @JsonProperty("number")
+    private String number;
 
     @JsonProperty("city")
     private String city;
@@ -57,11 +60,11 @@ public class EBCAddress {
 
     private EBCLocation location;
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -71,6 +74,14 @@ public class EBCAddress {
 
     public void setStreet(String street) {
         this.street = street;
+    }
+
+    public String getNumber() {
+        return number;
+    }
+
+    public void setNumber(String number) {
+        this.number = number;
     }
 
     public String getCity() {

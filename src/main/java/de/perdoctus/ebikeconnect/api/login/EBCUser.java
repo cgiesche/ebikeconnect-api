@@ -34,7 +34,7 @@ import java.util.List;
 public class EBCUser {
 
     @JsonProperty("user_id")
-    private int userId;
+    private long userId;
 
     @JsonProperty("email")
     private String email;
@@ -47,6 +47,9 @@ public class EBCUser {
 
     @JsonProperty("home_address")
     private EBCAddress homeAddress;
+
+    @JsonProperty("work_address")
+    private EBCAddress workAddress;
 
     @JsonProperty("date_of_birth")
     private String dateOfBirth;
@@ -69,11 +72,11 @@ public class EBCUser {
     @JsonProperty("remaining_home_changes")
     private int remainingHomeChanges;
 
-    public int getUserId() {
+    public long getUserId() {
         return userId;
     }
 
-    public void setUserId(int userId) {
+    public void setUserId(long userId) {
         this.userId = userId;
     }
 
@@ -107,6 +110,14 @@ public class EBCUser {
 
     public void setHomeAddress(EBCAddress homeAddress) {
         this.homeAddress = homeAddress;
+    }
+
+    public EBCAddress getWorkAddress() {
+        return workAddress;
+    }
+
+    public void setWorkAddress(EBCAddress workAddress) {
+        this.workAddress = workAddress;
     }
 
     public String getDateOfBirth() {
