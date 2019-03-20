@@ -72,6 +72,12 @@ public class EBCUser {
     @JsonProperty("remaining_home_changes")
     private int remainingHomeChanges;
 
+    @JsonProperty("facebook")
+    private long facebookId;
+
+    @JsonProperty("picture")
+    private String picture;
+
     public long getUserId() {
         return userId;
     }
@@ -176,4 +182,19 @@ public class EBCUser {
         this.remainingHomeChanges = remainingHomeChanges;
     }
 
+    public long getFacebookId() {
+        return facebookId;
+    }
+
+    public void setFacebookId(long facebookId) {
+        this.facebookId = facebookId;
+    }
+
+    public String getPicture() {
+        return picture;
+    }
+
+    public void setPicture(String picture) {
+        this.picture = picture;
+    }
 }

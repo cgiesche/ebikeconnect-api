@@ -64,6 +64,9 @@ public class EBCActivityHeader {
     @JsonProperty("bui_serial")
     private String buiSerial;
 
+    @JsonProperty("header_type")
+    private String headerType;
+
     public long getId() {
         return id;
     }
@@ -150,5 +153,13 @@ public class EBCActivityHeader {
 
     public void setBuiSerial(String buiSerial) {
         this.buiSerial = buiSerial;
+    }
+
+    public String getHeaderType() {
+        return headerType;
+    }
+
+    public void setHeaderType(String headerType) {
+        this.headerType = headerType;
     }
 }
