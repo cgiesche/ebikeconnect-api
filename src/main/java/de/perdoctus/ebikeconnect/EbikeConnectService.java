@@ -34,13 +34,7 @@ import de.perdoctus.ebikeconnect.api.activities.EBCRawActivityResponse;
 import de.perdoctus.ebikeconnect.api.login.EBCLoginRequest;
 import de.perdoctus.ebikeconnect.api.login.EBCLoginResponse;
 import de.perdoctus.ebikeconnect.jaxrs.ObjectMapperProvider;
-import org.apache.http.client.HttpClient;
-import org.apache.http.conn.ClientConnectionManager;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.impl.conn.tsccm.ThreadSafeClientConnManager;
-import org.jboss.resteasy.client.jaxrs.ResteasyClientBuilder;
 import org.jboss.resteasy.client.jaxrs.ResteasyWebTarget;
-import org.jboss.resteasy.client.jaxrs.engines.ApacheHttpClient4Engine;
 
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
