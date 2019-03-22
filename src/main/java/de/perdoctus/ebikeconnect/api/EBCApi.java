@@ -35,7 +35,15 @@ import de.perdoctus.ebikeconnect.api.activities.EBCRawActivityResponse;
 import de.perdoctus.ebikeconnect.api.login.EBCLoginRequest;
 import de.perdoctus.ebikeconnect.api.login.EBCLoginResponse;
 
-import javax.ws.rs.*;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.CookieParam;
+import javax.ws.rs.GET;
+import javax.ws.rs.HeaderParam;
+import javax.ws.rs.POST;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
@@ -49,14 +57,17 @@ public interface EBCApi {
     @Path("/api/portal/login/public")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    Response login(final EBCLoginRequest loginRequest);
+    Response login(@HeaderParam("User-Agent") final String userAgent,
+                   final EBCLoginRequest loginRequest);
 
     /**
      * @return Status 200 when session is valid. Otherwise status 301.
      */
     @GET
     @Path("/user/checkSession")
-    Response checkSession(@CookieParam("JSESSIONID") final String sessionId);
+    Response checkSession(@HeaderParam("User-Agent") final String userAgent,
+                          @HeaderParam("Protect-from") final String protectFrom,
+                          @CookieParam("JSESSIONID") final String sessionId);
 
     /**
      * @return Always status 200.
@@ -64,28 +75,44 @@ public interface EBCApi {
     @GET
     @Path("/user/logout")
     @Produces(MediaType.TEXT_PLAIN)
-    Response logout(@CookieParam("JSESSIONID") final String sessionId);
+    Response logout(@HeaderParam("User-Agent") final String userAgent,
+                    @CookieParam("JSESSIONID") final String sessionId);
 
     @GET
     @Path("/api/activities/headers")
     @Produces(MediaType.APPLICATION_JSON)
     @JacksonFeatures(deserializationEnable = DeserializationFeature.UNWRAP_ROOT_VALUE)
-    EBCActivityHeadersResponse readActivityHeaders(@CookieParam("JSESSIONID") final String sessionId);
+    EBCActivityHeadersResponse readActivityHeaders(@HeaderParam("User-Agent") final String userAgent,
+                                                   @HeaderParam("Protect-from") final String protectFrom,
+                                                   @HeaderParam("If-Modified-Since") final String ifModifiedSince,
+                                                   @CookieParam("JSESSIONID") final String sessionId);
 
     @GET
     @Path("/api/activities/headers")
     @Produces(MediaType.APPLICATION_JSON)
     @JacksonFeatures(deserializationEnable = DeserializationFeature.UNWRAP_ROOT_VALUE)
-    EBCActivityHeadersResponse readActivityHeaders(@CookieParam("JSESSIONID") final String sessionId, @QueryParam("filters") final String filterExpression);
+    EBCActivityHeadersResponse readActivityHeaders(@HeaderParam("User-Agent") final String userAgent,
+                                                   @HeaderParam("Protect-from") final String protectFrom,
+                                                   @HeaderParam("If-Modified-Since") final String ifModifiedSince,
+                                                   @CookieParam("JSESSIONID") final String sessionId,
+                                                   @QueryParam("filters") final String filterExpression);
 
     @GET
     @Path("/api/activities/details/{startTime}")
     @Produces(MediaType.APPLICATION_JSON)
-    EBCActivityDetailsResponse readActivityDetails(@CookieParam("JSESSIONID") final String sessionId, @PathParam("startTime") final long startTime);
+    EBCActivityDetailsResponse readActivityDetails(@HeaderParam("User-Agent") final String userAgent,
+                                                   @HeaderParam("Protect-from") final String protectFrom,
+                                                   @HeaderParam("If-Modified-Since") final String ifModifiedSince,
+                                                   @CookieParam("JSESSIONID") final String sessionId,
+                                                   @PathParam("startTime") final long startTime);
 
     @GET
     @Path("/api/activities")
     @Produces(MediaType.APPLICATION_JSON)
     @JacksonFeatures(deserializationEnable = DeserializationFeature.UNWRAP_ROOT_VALUE)
-    EBCRawActivityResponse readRawActivityDetails(@CookieParam("JSESSIONID") final String sessionId, @QueryParam("filters") final String filterExpression);
+    EBCRawActivityResponse readRawActivityDetails(@HeaderParam("User-Agent") final String userAgent,
+                                                  @HeaderParam("Protect-from") final String protectFrom,
+                                                  @HeaderParam("If-Modified-Since") final String ifModifiedSince,
+                                                  @CookieParam("JSESSIONID") final String sessionId,
+                                                  @QueryParam("filters") final String filterExpression);
 }

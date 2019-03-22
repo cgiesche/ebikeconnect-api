@@ -46,7 +46,11 @@ import java.io.IOException;
 
 public class EbikeConnectService implements Closeable {
 
-    public static final String DEFAULT_ENDPOINT = "https://www.ebike-connect.com";
+    private static final String DEFAULT_ENDPOINT = "https://www.ebike-connect.com";
+    private static final String USER_AGENT = "NyonExplorer";
+    private static final String CSRF = "CSRF";
+    private static final String IF_MODIFIED_SINCE = "Mon, 26 Jul 1997 05:00:00 GMT";
+
     private final Client client;
     private final EBCApi ebikeConnectAPI;
     private String sessionId = null;
@@ -72,7 +76,7 @@ public class EbikeConnectService implements Closeable {
     }
 
     public EBCLoginResponse login(final String username, final String password) throws LoginFailedException {
-        final Response rawLoginResponse = ebikeConnectAPI.login(new EBCLoginRequest(username, password));
+        final Response rawLoginResponse = ebikeConnectAPI.login(USER_AGENT, new EBCLoginRequest(username, password));
 
         if (rawLoginResponse.getStatus() != Response.Status.OK.getStatusCode()) {
             rawLoginResponse.close();
@@ -89,7 +93,7 @@ public class EbikeConnectService implements Closeable {
 
     public void logout() {
         if (isLoggedIn()) {
-            ebikeConnectAPI.logout(sessionId);
+            ebikeConnectAPI.logout(USER_AGENT, sessionId);
             sessionId = null;
         }
     }
@@ -97,19 +101,19 @@ public class EbikeConnectService implements Closeable {
     public EBCActivityHeadersResponse getAllActivityHeaders() throws UnauthenticatedException {
         requireLoggedIn();
 
-        return ebikeConnectAPI.readActivityHeaders(this.sessionId);
+        return ebikeConnectAPI.readActivityHeaders(USER_AGENT, CSRF, IF_MODIFIED_SINCE, sessionId);
     }
 
     public EBCActivityDetailsResponse getActivityDetails(final long startTime) throws UnauthenticatedException {
         requireLoggedIn();
 
-        return ebikeConnectAPI.readActivityDetails(this.sessionId, startTime);
+        return ebikeConnectAPI.readActivityDetails(USER_AGENT, CSRF, IF_MODIFIED_SINCE, sessionId, startTime);
     }
 
     public EBCRawActivity getRawActivity(final long startTime) throws UnauthenticatedException {
         requireLoggedIn();
 
-        final EBCRawActivityResponse ebcRawActivityResponse = ebikeConnectAPI.readRawActivityDetails(sessionId, "[start_time|eq|" + startTime + ";]");
+        final EBCRawActivityResponse ebcRawActivityResponse = ebikeConnectAPI.readRawActivityDetails(USER_AGENT, CSRF, IF_MODIFIED_SINCE, sessionId, "[start_time|eq|" + startTime + ";]");
         if (ebcRawActivityResponse.getActivityList().isEmpty()) {
             return null;
         }
@@ -118,7 +122,7 @@ public class EbikeConnectService implements Closeable {
     }
 
     public boolean isLoggedIn() {
-        return this.sessionId != null;
+        return sessionId != null;
     }
 
     private void requireLoggedIn() throws UnauthenticatedException {
